@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+  <ion-list >
+    <ion-item-sliding *ngFor="let item of items; index as i">
+      <ion-item>
+          <ion-label>{{item.name}}</ion-label>
+          <p>{{item.quantity}}</p>
+        </ion-item>
+        <ion-item-options side="end">
+          <button (click)="removeItem(item,i)" ion-button>
+          <ion-icon name="remove-circle" color="danger"></ion-icon>
+        </button>
+        <button (click)="addQuantity(item, i)">
+          <ion-icon name="add-circle" color="success"></ion-icon>
+        </button>
+        <button (click)="shareItem(item, i)">
+          <ion-icon name="share" color="light"></ion-icon>
+        </button>
+        <button (click)="editItem(i)">
+          <ion-icon name="create" color="primary"></ion-icon>
+        </button>
+        <button (click)="deleteItem(i)">
+          <ion-icon name="trash" color="warning"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addAlert()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
